@@ -1,4 +1,6 @@
-﻿namespace Libs;
+﻿using System.Collections.Concurrent;
+
+namespace Libs;
 
 public class SearchWorker
 {
@@ -7,24 +9,28 @@ public class SearchWorker
     private string FileSearch { get; }
     private bool SubDirectory { get; }
     
-    private List<string> ListOfResult { get; }
+    private ConcurrentBag<string> ListOfResult { get; }
 
     public SearchWorker(string fileSearch, bool subDirectory)
     {
         FileSearch = fileSearch;
         SubDirectory = subDirectory;
 
-        ListOfResult = new List<string>();
+        ListOfResult = new ConcurrentBag<string>();
     }
 
-    public List<string> GetResults() => ListOfResult;
+    public List<string> GetResults() => ListOfResult.ToList();
 
     public async Task FindAll(string? path=null)
     {
         path ??= FileSearch;
 
         var files = Directory.EnumerateFiles(path, Pattern, SearchOption.TopDirectoryOnly);
-        ListOfResult.AddRange(files);
+        await Parallel.ForEachAsync(files, (file, _) =>
+        {
+            ListOfResult.Add(file);
+            return default;
+        });
 
         if (!SubDirectory) return;
 
