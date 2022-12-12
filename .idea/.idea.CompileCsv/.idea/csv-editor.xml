@@ -3,6 +3,13 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="\LibsTest\Csv\test.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\LibsTest\FileTest\Search\Nouveau dossier\Classeur1.csv">
           <value>
             <Attribute>
