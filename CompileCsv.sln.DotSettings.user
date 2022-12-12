@@ -6,5 +6,7 @@
     &lt;TestId&gt;xUnit::C72F90AC-D2E1-42FE-96B1-6CF0425F2A05::net7.0::LibsTest.Csv.ReaderTest.ReadAllTest&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::C72F90AC-D2E1-42FE-96B1-6CF0425F2A05::net7.0::LibsTest.Csv.ReaderTest.ReadAllOneTest&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::C72F90AC-D2E1-42FE-96B1-6CF0425F2A05::net7.0::LibsTest.Csv.ReaderTest.ReadAllMultipleTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::C72F90AC-D2E1-42FE-96B1-6CF0425F2A05::net7.0::LibsTest.CompileWorkerTest.CheckHeaderTest&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
+&lt;/SessionState&gt;</s:String>
+	</wpf:ResourceDictionary>

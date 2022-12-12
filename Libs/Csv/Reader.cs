@@ -1,4 +1,5 @@
-﻿using Libs.Type;
+﻿using System.Collections.Concurrent;
+using Libs.Type;
 
 namespace Libs.Csv;
 
@@ -7,7 +8,7 @@ public class Reader
     private string Separator { get; }
     private IEnumerable<string> FilePath { get; }
     
-    private List<SIndexedDict> ListOfResult { get; } = new();
+    private ConcurrentBag<SIndexedDict> ListOfResult { get; } = new();
 
     public Reader(string filePath, string separator=";")
     {
@@ -23,26 +24,31 @@ public class Reader
 
     public async Task ReadAll()
     {
-        await Parallel.ForEachAsync(GetIndex(), async (file, token) =>
+        var files = GetIndex();
+        
+        await Parallel.ForEachAsync(files,(file, _) =>
         {
-            var lines = await GetLines(file.value);
+            var lines = GetLines(file.value);
             var header = GetHeader(lines);
-
+        
             var dict = GetDict(header, lines.Skip(1));
+            
             ListOfResult.Add(new SIndexedDict
             {
                 Index = file.index,
                 Dictionary = dict,
                 FilePath = file.value
             });
+
+            return default;
         });
     }
 
-    private async Task<List<List<string>>> GetLines(string filePath)
+    private List<List<string>> GetLines(string filePath)
     {
-        await using var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+        using var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
         using var fileReader = new StreamReader(fileStream, true);
-        var str = await fileReader.ReadToEndAsync();
+        var str = fileReader.ReadToEnd();
         var li = str.Split('\n');
 
         li = li.Where(s => s != string.Empty).ToArray();
