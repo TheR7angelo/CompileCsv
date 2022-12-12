@@ -19,25 +19,20 @@ public class SearchWorker
 
     public List<string> GetResults() => ListOfResult;
 
-    public async Task FindAll(string? path)
+    public async Task FindAll(string? path=null)
     {
         path ??= FileSeach;
 
         var files = Directory.EnumerateFiles(path, Pattern, SearchOption.TopDirectoryOnly);
-        await Parallel.ForEachAsync(files, (file, token) =>
-        {
-            ListOfResult.Add(file);
-            return default;
-        });
+        ListOfResult.AddRange(files);
 
         if (!SubDirectory) return;
 
         var dirs = Directory.EnumerateDirectories(path);
 
-        await Parallel.ForEachAsync(dirs, (dir, token) =>
+        await Parallel.ForEachAsync(dirs, async (dir, token) =>
         {
-            Task.Run(() => FindAll(dir), token);
-            return default;
+            await Task.Run(async () => await FindAll(dir), token);
         });
     }
 }
