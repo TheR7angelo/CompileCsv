@@ -1,5 +1,6 @@
 ﻿using Libs;
 using Libs.Csv;
+using Xunit.Abstractions;
 
 namespace LibsTest.Csv;
 
@@ -19,20 +20,22 @@ public class ReaderTest
     }
     
     [Fact]
-    private void ReadAllMultipleTest()
+    private async Task ReadAllMultipleTest()
     {
         const string searchPath =
             "C:\\Users\\ZP6177\\Creative Cloud Files\\Programmation\\C#\\Ineo Infracom\\CompileCsv\\LibsTest\\FileTest\\Search";
         var search = new SearchWorker(searchPath, false);
         search.FindAll().Wait();
+
         var files = search.GetResults();
         
         var worker = new Reader(files);
 
-        worker.ReadAll().Wait();
+        await worker.ReadAll();
         var result = worker.GetResult().ToList();
-        
-        Assert.Equal(32, result.Count);
+        result = result.OrderBy(s => s.Index).ToList();
+
+        Assert.Equal(33, result.Count);
     }
     
 }

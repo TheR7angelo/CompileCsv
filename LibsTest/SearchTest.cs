@@ -15,7 +15,7 @@ public class SearchTest
 
         var files = worker.GetResults();
         
-        Assert.Equal(32, files.Count);
+        Assert.Equal(33, files.Count);
     }
     
     [Fact]
@@ -26,6 +26,6 @@ public class SearchTest
 
         var files = worker.GetResults();
         
-        Assert.Equal(96, files.Count);
+        Assert.Equal(97, files.Count);
     }
 }
