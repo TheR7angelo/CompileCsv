@@ -26,12 +26,20 @@ public class Reader
     {
         var files = GetIndex();
         
-        await Parallel.ForEachAsync(files,(file, _) =>
+        await Parallel.ForEachAsync(files, async (file, _) =>
         {
             var lines = GetLines(file.value);
             var header = GetHeader(lines);
         
-            var dict = GetDict(header, lines.Skip(1));
+            var tmp = GetDict(header, lines.Skip(1));
+            var dict = new ConcurrentBag<Dictionary<string, string>>();
+            await Parallel.ForEachAsync(tmp, _, (line, token) =>
+            {
+                line["filePath"] = file.value;
+                
+                dict.Add(line);
+                return default;
+            });
             
             ListOfResult.Add(new SIndexedDict
             {
@@ -39,8 +47,6 @@ public class Reader
                 Dictionary = dict,
                 FilePath = file.value
             });
-
-            return default;
         });
     }
 
