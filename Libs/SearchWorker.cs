@@ -4,14 +4,14 @@ public class SearchWorker
 {
     private const string Pattern = "*.csv";
     
-    private string FileSeach { get; }
+    private string FileSearch { get; }
     private bool SubDirectory { get; }
     
     private List<string> ListOfResult { get; }
 
-    public SearchWorker(string fileSeach, bool subDirectory)
+    public SearchWorker(string fileSearch, bool subDirectory)
     {
-        FileSeach = fileSeach;
+        FileSearch = fileSearch;
         SubDirectory = subDirectory;
 
         ListOfResult = new List<string>();
@@ -21,7 +21,7 @@ public class SearchWorker
 
     public async Task FindAll(string? path=null)
     {
-        path ??= FileSeach;
+        path ??= FileSearch;
 
         var files = Directory.EnumerateFiles(path, Pattern, SearchOption.TopDirectoryOnly);
         ListOfResult.AddRange(files);
