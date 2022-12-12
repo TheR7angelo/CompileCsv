@@ -20,7 +20,7 @@ public class CompileWorkerTest
         var readerResult = worker.GetResult().ToList();
 
 
-        var complileWorker = new ComplileWorker(readerResult);
+        var complileWorker = new CompileWorker(readerResult);
         complileWorker.CheckHeader().Wait();
         var check = complileWorker.GetErrorHeader();
 
@@ -29,6 +29,6 @@ public class CompileWorkerTest
             "C:\\Users\\ZP6177\\Creative Cloud Files\\Programmation\\C#\\Ineo Infracom\\CompileCsv\\LibsTest\\FileTest\\Search\\Classeur1 - Copie - Copie (5).csv"
         };
         
-        Assert.Equal(expect, check);
+        Assert.Equal(expect, check!);
     }
 }

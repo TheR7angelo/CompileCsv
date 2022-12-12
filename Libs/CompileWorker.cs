@@ -2,13 +2,13 @@
 
 namespace Libs;
 
-public class ComplileWorker
+public class CompileWorker
 {
     private List<string>? ErrorHeader { get; set; }
     
     private List<SIndexedDict> Datas { get; }
 
-    public ComplileWorker(IEnumerable<SIndexedDict> datas)
+    public CompileWorker(IEnumerable<SIndexedDict> datas)
     {
         ErrorHeader = new List<string>();
         Datas = datas.OrderBy(s => s.Index).ToList();
