@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-        xmlns:local="clr-namespace:CompileCsv"
+        xmlns:views="clr-namespace:CompileCsv.Views"
         mc:Ignorable="d"
         
         TitleCharacterCasing="Normal"
@@ -35,12 +35,16 @@
         </Grid.RowDefinitions>
         
         <!-- Body -->
-        <Grid Grid.Row="0">
-            
+        <Grid Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="400">
+            <views:MainView/>
         </Grid>
         
         <!-- Footer -->
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" x:Name="GridFooter" Background="Gray">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Label Padding="5, 0, 0, 0" Content="Version : " Foreground="White"/>
+                <Label x:Name="LabelVersion" Padding="0" Foreground="White"/>
+            </StackPanel>
         </Grid>
         
     </Grid>
