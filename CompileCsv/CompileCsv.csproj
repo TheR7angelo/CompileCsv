@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <OutputType>WinExe</OutputType>
+        <OutputType>Exe</OutputType>
         <TargetFramework>net7.0-windows</TargetFramework>
         <Nullable>enable</Nullable>
         <UseWPF>true</UseWPF>
@@ -11,18 +11,22 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="MahApps.Metro" Version="2.4.9"/>
+        <PackageReference Include="MahApps.Metro" Version="2.4.9" />
     </ItemGroup>
 
     <ItemGroup>
-        <None Remove="Icone.png"/>
+        <None Remove="Icone.png" />
         <Resource Include="Icone.png">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Resource>
-        <None Remove="Icone.ico"/>
+        <None Remove="Icone.ico" />
         <Resource Include="Icone.ico">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Resource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Libs\Libs.csproj" />
     </ItemGroup>
 
 </Project>
