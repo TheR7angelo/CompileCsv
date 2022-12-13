@@ -8,21 +8,47 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="4*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         
         <local:SearchFiles x:Name="SearchFiles" Grid.Row="0"/>
         
         <Separator Grid.Row="1" BorderBrush="Black" BorderThickness="3"/>
         
-        <ListBox Grid.Row="2" x:Name="ListBoxFiles" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <CheckBox IsChecked="{Binding IsChecked}" Content="{Binding Name}"/>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <Border Grid.Row="2" CornerRadius="1" BorderBrush="Black" BorderThickness="2" MinHeight="20">
+            <ListBox x:Name="ListBoxFiles" VerticalAlignment="Center" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay}" Content="{Binding Name}" Click="CheckBoxFile_OnClick"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Border>
+        
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <Label Content="Nombre de fichier trouver: "/>
+                <Label x:Name="LabelNumberFind"/>
+            </StackPanel>
+            
+            <StackPanel Grid.Column="1">
+                <Button Content="Vérifier la compatibilité des fichiers" Click="ButtonCheckFile_OnClick"/>
+            </StackPanel>
+            
+            <StackPanel Grid.Column="2" Orientation="Horizontal">
+                <Label x:Name="LabelNumberSelected"/>
+                <Label Content=" :Nombre de fichier sélectionner"/>
+            </StackPanel>
+            
+        </Grid>
         
     </Grid>
 </UserControl>
