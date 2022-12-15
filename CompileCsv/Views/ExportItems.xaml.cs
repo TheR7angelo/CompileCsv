@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Windows;
 using Libs;
-using Libs.Csv;
+using Ookii.Dialogs.Wpf;
 
 namespace CompileCsv.Views;
 
@@ -34,7 +34,7 @@ public partial class ExportItems
             MainView.DisplayItems.ListBoxFiles.Items.Refresh();
 
             MainView.ExportItems.LabelNumberSelected.Content = MainView.DisplayItems.CountSelectedFile();
-            var messageTxt = new List<string>()
+            var messageTxt = new List<string>
             {
                 "Des fichiers non compatible on étais détecter, ils ont étais automatiquement retirer.",
                 "Voulez vous lancer quand même lancer la compilation ?"
@@ -46,10 +46,29 @@ public partial class ExportItems
             if (msg.Equals(MessageBoxResult.No)) return;
         }
 
-        var csvs = await check.GetCompile();
-
-        var writer = new Writer(csvs);
-        writer.Write("Je suis un test trop bien.csv");
+        var savePath = GetSavePath();
+        if (savePath is null) return;
         
+        var csvData = await check.GetCompile();
+
+        var progress = new ProgressDialog(csvData, savePath);
+        progress.ShowDialog();
+    }
+
+    private static string? GetSavePath()
+    {
+        string? result = null;
+
+        var dialog = new VistaSaveFileDialog()
+        {
+            Filter = "Fichier csv (*.csv)|*.csv",
+            DefaultExt = "csv"
+        };
+        if (dialog.ShowDialog().Equals(true))
+        {
+            result = dialog.FileName;
+        }
+        
+        return result;
     }
 }
