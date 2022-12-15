@@ -7,17 +7,17 @@ namespace CompileCsv.Views;
 
 public partial class DisplayItems
 {
-    public MainView MainView { get; set; } = null!;
+    internal MainView MainView { get; set; } = null!;
 
     public DisplayItems()
     {
         InitializeComponent();
     }
 
-    public int CountSelectedFile() => GetFiles().Count(s => s.IsChecked);
+    internal int CountSelectedFile() => GetFiles().Count(s => s.IsChecked);
     
-    public IEnumerable<SelectedFile> GetFiles() => ListBoxFiles.Items.Cast<SelectedFile>();
+    internal IEnumerable<SelectedFile> GetFiles() => ListBoxFiles.Items.Cast<SelectedFile>();
 
     private void CheckBoxFile_OnClick(object sender, RoutedEventArgs e) =>
-        MainView.LabelNumberSelected.Content = CountSelectedFile();
+        MainView.ExportItems.LabelNumberSelected.Content = CountSelectedFile();
 }
