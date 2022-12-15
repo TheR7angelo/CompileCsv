@@ -71,4 +71,14 @@ public partial class ExportItems
         
         return result;
     }
+
+    private void ButtonClearSearch_OnClick(object sender, RoutedEventArgs e)
+    {
+        MainView.DisplayItems.ListBoxFiles.ItemsSource = null;
+        LabelNumberSelected.Content = "0";
+        LabelNumberFind.Content = "0";
+    }
+
+    private void ButtonSearchCsv_OnClick(object sender, RoutedEventArgs e) =>
+        MainView.SearchFiles.ButtonSearchCsv_OnClick(sender, e);
 }

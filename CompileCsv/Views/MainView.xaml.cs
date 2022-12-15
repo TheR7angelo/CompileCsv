@@ -52,6 +52,8 @@ public partial class MainView
         return reader.GetResult();
     }
 
+    internal void ClearSearch() => DisplayItems.ListBoxFiles.ItemsSource = null;
+
     #endregion
     
 }

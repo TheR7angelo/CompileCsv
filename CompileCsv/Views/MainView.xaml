@@ -13,13 +13,11 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         
-        <local:SearchFiles x:Name="SearchFiles" Grid.Row="0" Margin="5, 5, 5, 5"/>
-        
-        <Separator Grid.Row="1" BorderBrush="Black" Margin="5, 5, 5, 5"/>
+        <local:SearchFiles x:Name="SearchFiles" Grid.Row="0" Margin="5, 5, 5, 10"/>
         
         <local:DisplayItems x:Name="DisplayItems" Grid.Row="2" MinHeight="200" Margin="5, 5, 5, 5"/>
 
-        <local:ExportItems x:Name="ExportItems" Grid.Row="3" Margin="5, 10, 5, 5"/>
+        <local:ExportItems x:Name="ExportItems" Grid.Row="3" Width="530" Margin="5, 10, 5, 5"/>
         
     </Grid>
 </UserControl>

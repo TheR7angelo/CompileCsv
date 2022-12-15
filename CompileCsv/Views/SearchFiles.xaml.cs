@@ -16,11 +16,13 @@ public partial class SearchFiles
         InitializeComponent();
     }
 
-    private async void ButtonSearchCsv_OnClick(object sender, RoutedEventArgs e)
+    internal async void ButtonSearchCsv_OnClick(object sender, RoutedEventArgs e)
     {
         var subDirectory = CheckBoxSubDirectory.IsChecked ?? false;
 
         var search = TextBoxSearchPath.Text;
+        if (search.Equals(string.Empty)) return;
+        
         var worker = new SearchWorker(search, subDirectory);
         await worker.FindAll();
         var files = worker.GetResults();
@@ -31,7 +33,7 @@ public partial class SearchFiles
 
     private void OnFindFiles(IEnumerable<string> files) => SearchFilesOnFindFiles?.Invoke(files);
 
-    private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+    private void ButtonSearchPath_OnClick(object sender, RoutedEventArgs e)
     {
         var dialog = new VistaFolderBrowserDialog();
         if (!dialog.ShowDialog().Equals(true)) return;
