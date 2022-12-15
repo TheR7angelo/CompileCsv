@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using Libs.Csv;
 
 namespace CompileCsv.Views;
@@ -33,4 +34,10 @@ public partial class ProgressDialog
     private void ProgressDialog_OnClosing(object? sender, CancelEventArgs e) => _cancellationTokenSource.Cancel();
 
     private void ProgressDialog_OnActivated(object? sender, EventArgs e) => StartWork();
+
+    private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+    {
+        _cancellationTokenSource.Cancel();
+        Close();
+    }
 }
