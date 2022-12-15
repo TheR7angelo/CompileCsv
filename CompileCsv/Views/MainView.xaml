@@ -17,20 +17,17 @@
         
         <Separator Grid.Row="1" BorderBrush="Black" BorderThickness="3"/>
         
-        <Border Grid.Row="2" CornerRadius="1" BorderBrush="Black" BorderThickness="2" MinHeight="20">
-            <ListBox x:Name="ListBoxFiles" VerticalAlignment="Center" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay}" Content="{Binding Name}" Click="CheckBoxFile_OnClick"/>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </Border>
-        
+        <local:DisplayItems x:Name="DisplayItems" Grid.Row="2"/>
+
         <Grid Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             
@@ -39,11 +36,15 @@
                 <Label x:Name="LabelNumberFind"/>
             </StackPanel>
             
-            <StackPanel Grid.Column="1">
-                <Button Content="Vérifier la compatibilité des fichiers" Click="ButtonCheckFile_OnClick"/>
+            <Border Grid.Column="1" Background="Gray" Width="3" Margin="10, 0"/>
+            
+            <StackPanel Grid.Column="2">
+                <Button Content="Compiler les fichiers" Click="ButtonCheckFile_OnClick"/>
             </StackPanel>
             
-            <StackPanel Grid.Column="2" Orientation="Horizontal">
+            <Border Grid.Column="3" Background="Gray" Width="3" Margin="10, 0"/>
+            
+            <StackPanel Grid.Column="4" Orientation="Horizontal">
                 <Label x:Name="LabelNumberSelected"/>
                 <Label Content=" :Nombre de fichier sélectionner"/>
             </StackPanel>

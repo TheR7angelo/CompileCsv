@@ -15,6 +15,7 @@ public partial class MainView
     public MainView()
     {
         InitializeComponent();
+        DisplayItems.MainView = this;
         
         SearchFiles.SearchFilesOnFindFiles += SearchFiles_OnFindFiles;
     }
@@ -28,19 +29,36 @@ public partial class MainView
         await check.CheckHeader();
         var errors = check.GetErrorHeader();
 
-        if (errors is null) return;
-
-        var data = GetFiles().ToList();
-        foreach (var error in errors)
+        if (errors is not null)
         {
-            var p =data.First(s => s.Path.Equals(error));
-            p.IsChecked = false;
+            var data = DisplayItems.GetFiles().ToList();
+            foreach (var error in errors)
+            {
+                var p = data.First(s => s.Path.Equals(error));
+                p.IsChecked = false;
+            }
+
+            DisplayItems.ListBoxFiles.Items.Refresh();
+
+            LabelNumberSelected.Content = DisplayItems.CountSelectedFile();
+            var messageTxt = new List<string>()
+            {
+                "Des fichiers non compatible on étais détecter, ils ont étais automatiquement retirer.",
+                "Voulez vous lancer quand même lancer la compilation ?"
+            };
+
+            var msg = MessageBox.Show(string.Join('\n', messageTxt),
+                "Des erreurs ont étais détecter", MessageBoxButton.YesNo, MessageBoxImage.Error);
+
+            if (msg.Equals(MessageBoxResult.No)) return;
         }
-        ListBoxFiles.Items.Refresh();
-        CountSelectedFile();
+
+        var csvs = await check.GetCompile();
+
+        var writer = new Writer(csvs);
+        writer.Write("Je suis un test trop bien.csv");
+        
     }
-    
-    private void CheckBoxFile_OnClick(object sender, RoutedEventArgs e) => CountSelectedFile();
 
     private void SearchFiles_OnFindFiles(IEnumerable<string> files)
     {
@@ -56,22 +74,22 @@ public partial class MainView
             });
         }
 
-        ListBoxFiles.ItemsSource = data;
+        DisplayItems.ListBoxFiles.ItemsSource = data;
         LabelNumberFind.Content = data.Count;
-        CountSelectedFile();
+        LabelNumberSelected.Content = DisplayItems.CountSelectedFile();
     }
 
     #endregion
 
     #region Function
 
-    private void CountSelectedFile() => LabelNumberSelected.Content = GetFiles().Count(s => s.IsChecked);
+    // private void CountSelectedFile() => LabelNumberSelected.Content = DisplayItems.GetFiles().Count(s => s.IsChecked);
 
-    private IEnumerable<SelectedFile> GetFiles() => ListBoxFiles.Items.Cast<SelectedFile>();
+    // private IEnumerable<SelectedFile> GetFiles() => ListBoxFiles.Items.Cast<SelectedFile>();
     
     private async Task<IEnumerable<SIndexedDict>> ReadFiles()
     {
-        var data = GetFiles();
+        var data = DisplayItems.GetFiles();
         var reader = new Reader(data.Where(s => s.IsChecked).Select(s => s.Path));
         await reader.ReadAll();
         return reader.GetResult();
