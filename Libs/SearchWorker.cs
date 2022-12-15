@@ -19,7 +19,7 @@ public class SearchWorker
         ListOfResult = new ConcurrentBag<string>();
     }
 
-    public List<string> GetResults() => ListOfResult.ToList();
+    public List<string> GetResults() => ListOfResult.Order().ToList();
 
     public async Task FindAll(string? path=null)
     {

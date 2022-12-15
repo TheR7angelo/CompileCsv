@@ -8,18 +8,18 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         
-        <local:SearchFiles x:Name="SearchFiles" Grid.Row="0"/>
+        <local:SearchFiles x:Name="SearchFiles" Grid.Row="0" Margin="5, 5, 5, 5"/>
         
-        <Separator Grid.Row="1" BorderBrush="Black" BorderThickness="3"/>
+        <Separator Grid.Row="1" BorderBrush="Black" Margin="5, 5, 5, 5"/>
         
-        <local:DisplayItems x:Name="DisplayItems" Grid.Row="2"/>
+        <local:DisplayItems x:Name="DisplayItems" Grid.Row="2" MinHeight="200" Margin="5, 5, 5, 5"/>
 
-        <local:ExportItems x:Name="ExportItems" Grid.Row="3"/>
+        <local:ExportItems x:Name="ExportItems" Grid.Row="3" Margin="5, 10, 5, 5"/>
         
     </Grid>
 </UserControl>
