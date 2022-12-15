@@ -21,37 +21,5 @@
 
         <local:ExportItems x:Name="ExportItems" Grid.Row="3"/>
         
-        <!-- <Grid Grid.Row="3"> -->
-        <!--     <Grid.RowDefinitions> -->
-        <!--         <RowDefinition Height="*"/> -->
-        <!--     </Grid.RowDefinitions> -->
-        <!--     <Grid.ColumnDefinitions> -->
-        <!--         <ColumnDefinition Width="Auto"/> -->
-        <!--         <ColumnDefinition Width="Auto"/> -->
-        <!--         <ColumnDefinition Width="*"/> -->
-        <!--         <ColumnDefinition Width="Auto"/> -->
-        <!--         <ColumnDefinition Width="Auto"/> -->
-        <!--     </Grid.ColumnDefinitions> -->
-        <!--      -->
-        <!--     <StackPanel Grid.Column="0" Orientation="Horizontal"> -->
-        <!--         <Label Content="Nombre de fichier trouver: "/> -->
-        <!--         <Label x:Name="LabelNumberFind"/> -->
-        <!--     </StackPanel> -->
-        <!--      -->
-        <!--     <Border Grid.Column="1" Background="Gray" Width="3" Margin="10, 0"/> -->
-        <!--      -->
-        <!--     <StackPanel Grid.Column="2"> -->
-        <!--         <Button Content="Compiler les fichiers" Click="ButtonCheckFile_OnClick"/> -->
-        <!--     </StackPanel> -->
-        <!--      -->
-        <!--     <Border Grid.Column="3" Background="Gray" Width="3" Margin="10, 0"/> -->
-        <!--      -->
-        <!--     <StackPanel Grid.Column="4" Orientation="Horizontal"> -->
-        <!--         <Label x:Name="LabelNumberSelected"/> -->
-        <!--         <Label Content=" :Nombre de fichier sélectionner"/> -->
-        <!--     </StackPanel> -->
-        <!--      -->
-        <!-- </Grid> -->
-        
     </Grid>
 </UserControl>
