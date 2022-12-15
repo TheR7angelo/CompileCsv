@@ -9,8 +9,11 @@ public class Writer
         Datas = datas;
     }
 
-    public void Write(string filePath, string separator=";")
+    public void Write(string filePath, string separator=";", IProgress<float>? progress=null)
     {
+        float maxmium = Datas.Count();
+        var actual = 0;
+        
         using var file = new StreamWriter(filePath);
         
         var keys = Datas.First().Keys;
@@ -22,6 +25,11 @@ public class Writer
         {
             var values = string.Join(separator, data.Values);
             file.WriteLine(values);
+
+            actual += 1;
+            var value = actual / maxmium * 100;
+            progress?.Report(value);
+            Thread.Sleep(1);
         }
         file.Flush();
         file.Close();

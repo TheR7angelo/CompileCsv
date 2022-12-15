@@ -30,7 +30,7 @@ public class WiterTest
         data.Wait();
         
         var worker = new Writer(data.Result);
-
+        
         worker.Write(output);
         
         Assert.True(File.Exists(output));
