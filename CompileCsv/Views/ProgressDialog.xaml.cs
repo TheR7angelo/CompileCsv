@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -28,6 +30,9 @@ public partial class ProgressDialog
         var progress = new Progress<float>(percent => ProgressBar.Value = percent);
         var writer = new Writer(CsvData);
         await Task.Run(() => writer.Write(SavePath, ";", progress), _cancellationTokenSource.Token);
+        
+        Process.Start(Environment.GetEnvironmentVariable("WINDIR") + @"\explorer.exe", Path.GetDirectoryName(SavePath)!);
+        
         Close();
     }
     
