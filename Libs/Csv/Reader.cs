@@ -65,7 +65,7 @@ public class Reader
     private static IEnumerable<string> GetHeader(IReadOnlyList<List<string>> lines) => lines[0];
 
     private static IEnumerable<Dictionary<string, string>> GetDict(IEnumerable<string> header, IEnumerable<List<string>> lines) 
-        => lines.Select(line => header.Zip(line).ToDictionary(x => x.First, x => x.Second)).ToList();
+        => lines.Select(line => header.Zip(line).ToDictionary(x => x.First.Replace("\r", ""), x => x.Second.Replace("\r", ""))).ToList();
 
     private IEnumerable<(string value, int index)> GetIndex() 
         => FilePath.Select((value, index) => (value, index));
