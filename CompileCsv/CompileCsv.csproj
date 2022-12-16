@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <OutputType>Exe</OutputType>
+        <OutputType>WinExe</OutputType>
         <TargetFramework>net7.0-windows</TargetFramework>
         <Nullable>enable</Nullable>
         <UseWPF>true</UseWPF>
-        <ApplicationIcon>Icone.ico</ApplicationIcon>
+        <ApplicationIcon>Assets\Icone.ico</ApplicationIcon>
         <AssemblyName>CompileCsv</AssemblyName>
         <RootNamespace>CompileCsv</RootNamespace>
     </PropertyGroup>
@@ -17,13 +17,10 @@
 
     <ItemGroup>
         <None Remove="Icone.png" />
-        <Resource Include="Icone.png">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <Resource Include="Assets\Icone.ico">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Resource>
         <None Remove="Icone.ico" />
-        <Resource Include="Icone.ico">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Resource>
         <None Remove="Assets\024-folder-16.svg" />
     </ItemGroup>
 
