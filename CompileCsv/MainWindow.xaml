@@ -27,7 +27,7 @@
         </mah:WindowCommands>
     </mah:MetroWindow.LeftWindowCommands>
     
-    <Grid ShowGridLines="True">
+    <Grid>
         
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
