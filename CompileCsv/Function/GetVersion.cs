@@ -11,7 +11,7 @@ namespace CompileCsv.Function;
 
 public static class GetVersion
 {
-    private static readonly bool SignleFile = true;
+    private const bool SingleFile = true;
     private static string NewVersion { get; set; } = string.Empty;
     private static string NewVersionCopy { get; set; } = string.Empty;
 
@@ -84,7 +84,7 @@ public static class GetVersion
     {
         if (!File.Exists(NewVersionCopy)) return;
         
-        if (SignleFile)
+        if (SingleFile)
         {
             var currentDirectory = AssemblyCl.GetFolderPath();
             currentDirectory = Path.GetDirectoryName(currentDirectory);
