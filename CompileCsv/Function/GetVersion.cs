@@ -11,7 +11,7 @@ namespace CompileCsv.Function;
 
 public static class GetVersion
 {
-    private static readonly bool SignleFile = false;
+    private static readonly bool SignleFile = true;
     private static string NewVersion { get; set; } = string.Empty;
     private static string NewVersionCopy { get; set; } = string.Empty;
 
