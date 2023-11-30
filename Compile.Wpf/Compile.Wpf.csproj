@@ -10,6 +10,24 @@
 
     <ItemGroup>
       <PackageReference Include="MaterialDesignThemes.MahApps" Version="0.3.0" />
+    <ItemGroup>
+      <None Remove="Assets\024-folder-16.svg" />
+      <Resource Include="Assets\024-folder-16.svg">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Assets\009-check.svg" />
+      <Resource Include="Assets\009-check.svg">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Assets\icone.ico" />
+      <Resource Include="Assets\icone.ico">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Assets\icone.png" />
+      <Resource Include="Assets\icone.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+    </ItemGroup>
     </ItemGroup>
 
 </Project>
