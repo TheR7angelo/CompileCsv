@@ -1,9 +1,5 @@
-﻿/CompileCsv/bin/
-/CompileCsv/obj/
+﻿.idea/
+Centre Application.sln.DotSettings.user
 
-/Libs/bin/
-/Libs/obj/
-
-/LibsTest/bin/
-/LibsTest/obj/
-/LibsTest/FileTest/
+bin/
+obj/
