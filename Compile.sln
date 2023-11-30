@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compile.IO.Test", "Compile.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compile.Models", "Compile.Models\Compile.Models.csproj", "{CA3B3136-3561-4B8E-A5A6-BAD287495883}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compile.Wpf", "Compile.Wpf\Compile.Wpf.csproj", "{82727328-FB01-45D7-ABB0-49A704DFF60A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{CA3B3136-3561-4B8E-A5A6-BAD287495883}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA3B3136-3561-4B8E-A5A6-BAD287495883}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA3B3136-3561-4B8E-A5A6-BAD287495883}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82727328-FB01-45D7-ABB0-49A704DFF60A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82727328-FB01-45D7-ABB0-49A704DFF60A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82727328-FB01-45D7-ABB0-49A704DFF60A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82727328-FB01-45D7-ABB0-49A704DFF60A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
