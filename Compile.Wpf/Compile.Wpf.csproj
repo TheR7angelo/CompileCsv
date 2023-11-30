@@ -6,10 +6,17 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <UseWPF>true</UseWPF>
+        <AssemblyName>Compile</AssemblyName>
+        <ApplicationIcon>Assets\icone.ico</ApplicationIcon>
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="AutoUpdaterWpf" Version="1.1.0" />
       <PackageReference Include="MaterialDesignThemes.MahApps" Version="0.3.0" />
+      <PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
+      <PackageReference Include="SharpVectors" Version="1.8.2" />
+    </ItemGroup>
+
     <ItemGroup>
       <None Remove="Assets\024-folder-16.svg" />
       <Resource Include="Assets\024-folder-16.svg">
@@ -28,6 +35,9 @@
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Resource>
     </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Compile.IO\Compile.IO.csproj" />
     </ItemGroup>
 
 </Project>

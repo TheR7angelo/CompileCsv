@@ -11,7 +11,10 @@ public static class CsvWriter
         var configuration = new CsvConfiguration(CultureInfo.InvariantCulture) { Delimiter = ";" };
 
         var extension = Path.GetExtension(fileToSave);
-        fileToSave = Path.GetFileNameWithoutExtension(fileToSave);
+        var directoryName = Path.GetDirectoryName(fileToSave);
+        var fileName = Path.GetFileNameWithoutExtension(fileToSave);
+
+        fileToSave = Path.Join(directoryName, fileName);
 
         var compiles = csvCompile.Compile;
         var needIndex = compiles.Keys.Count > 1;

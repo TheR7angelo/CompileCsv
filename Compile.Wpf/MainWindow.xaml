@@ -25,6 +25,14 @@
 
                  DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
+    <mah:MetroWindow.LeftWindowCommands>
+        <mah:WindowCommands>
+            <Button>
+                <Image Source="/Assets/icone.png" Width="22" Height="22" />
+            </Button>
+        </mah:WindowCommands>
+    </mah:MetroWindow.LeftWindowCommands>
+
     <Grid>
 
         <Grid.RowDefinitions>

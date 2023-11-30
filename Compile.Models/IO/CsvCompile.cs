@@ -1,4 +1,6 @@
-﻿namespace Compile.Models.IO;
+﻿using System.ComponentModel;
+
+namespace Compile.Models.IO;
 
 public class CsvCompile
 {
@@ -8,6 +10,9 @@ public class CsvCompile
 
 public class CsvCompileError
 {
+    [DisplayName("Fichier")]
     public required string File { get; set; }
+
+    [DisplayName("Erreur")]
     public required Exception Exception { get; set; }
 }
